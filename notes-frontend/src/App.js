@@ -1,4 +1,5 @@
 // frontend/src/App.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, Switch, Container, Grid, Paper, List, ListItem, ListItemText, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, CssBaseline, useMediaQuery } from '@mui/material';
@@ -81,6 +82,10 @@ function App() {
   };
 
   const handleSaveNote = async () => {
+    if (!selectedGroup) {
+      console.error('No group selected');
+      return;
+    }
     try {
       const noteData = {
         ...editNote,
